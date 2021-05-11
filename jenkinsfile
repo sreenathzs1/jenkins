@@ -1,11 +1,26 @@
 pipeline {
     agent any
+
+    enivironment {
+        PROJECT_NAME = "ROBOSHOP"
+    }
     
     stages{
-        stage('Hello') {
+
+        stage('ONE') {
             steps{
-                echo "Heloo"
+                .sh "echo &{PROJECT_NAME}"
+            }
+        }
+        stage('two'){
+
+            enivironment {
+                PROJECT_NAME = "TODO"
+            }
+            steps {
+                .sh "echo ${PROJECT_NAME}"
             }
         }
     }
+
 }
