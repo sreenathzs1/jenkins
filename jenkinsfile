@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    enivironment {
+    environment {
         PROJECT_NAME = "ROBOSHOP"
     }
     
@@ -9,12 +9,12 @@ pipeline {
 
         stage('ONE') {
             steps{
-                .sh "echo &{PROJECT_NAME}"
+                .sh "echo ${PROJECT_NAME}"
             }
         }
         stage('two'){
 
-            enivironment {
+            environment {
                 PROJECT_NAME = "TODO"
             }
             steps {
