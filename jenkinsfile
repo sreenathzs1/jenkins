@@ -5,7 +5,7 @@ pipeline {
         PROJECT_NAME = "ROBOSHOP"
     }
     
-    stages{
+    stages {
 
         stage('ONE') {
             steps{
