@@ -9,7 +9,7 @@ pipeline {
 
         stage('ONE') {
             steps{
-                .sh "echo ${PROJECT_NAME}"
+                sh "echo ${PROJECT_NAME}"
             }
         }
         stage('two'){
@@ -18,7 +18,7 @@ pipeline {
                 PROJECT_NAME = "TODO"
             }
             steps {
-                .sh "echo ${PROJECT_NAME}"
+                sh "echo ${PROJECT_NAME}"
             }
         }
     }
