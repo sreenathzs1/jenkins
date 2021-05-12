@@ -4,7 +4,7 @@ pipeline('frontend-ci') {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
-                    'url'('https github')
+                    'url'('https://github.com/sreenathzs1/frontend.git')
                 }
             }
             'branches' {
