@@ -12,7 +12,7 @@ pipeline {
                 sh "echo ${PROJECT_NAME}"
             }
         }
-        stage('two') {
+        stage('TWO') {
 
             environment {
                 PROJECT_NAME = "TODO"
