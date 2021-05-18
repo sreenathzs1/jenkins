@@ -39,7 +39,7 @@ pipelineJob('CI-Pipelines/users-ci') {
                 }
             }
         }
-        'scriptpath'('jenkinsfile')
+        'scriptpath'('Jenkinsfile')
         'lightweight'(true)
     }
  }
