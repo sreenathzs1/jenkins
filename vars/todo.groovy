@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Download Dependencies') {
             when {
-                environement name: 'APP_TYPE', value: 'NGINX'
+                environment name: 'APP_TYPE', value: 'NGINX'
             }
             steps {
                 sh '''
@@ -43,7 +43,7 @@ pipeline {
 
          stage('compile code & Package') {
              when {
-                environement name: 'APP_TYPE', value: 'JAVA'
+                environment name: 'APP_TYPE', value: 'JAVA'
             }
             steps {
              sh '''
@@ -62,7 +62,7 @@ pipeline {
 
         stage('preapare Artifact-JAVA') {
             when {
-                environement name: 'APP_TYPE', value: 'JAVA'
+                environment name: 'APP_TYPE', value: 'JAVA'
             }
             steps {
                 sh '''
