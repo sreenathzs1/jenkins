@@ -20,6 +20,7 @@ pipeline {
             steps {
                 sh '''
                 npm install 
+                sudo npm install -g npm@latest
                 npm run build
                 '''
             }
