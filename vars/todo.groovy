@@ -27,10 +27,12 @@ pipeline {
         }
 
         stage('preapare Artifact') {
+            when {
+                environment name: 'COMPONENT', value: 'frontend'
+            }
             steps {
                 sh '''
-                 echo ${COMPONENT}
-                 zip -r frontend.zip node_modules dist
+                 zip -r ${COMPONENT}.zip node_modules dist
                  '''
             }
         }
