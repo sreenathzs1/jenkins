@@ -14,7 +14,7 @@ pipeline {
         NEXUS_IP        = "${args.NEXUS_IP}"
         PROJECT_NAME    = "${args.PROJECT_NAME}"
         SLAVE_LABEL     = "${args.SLAVE_NAME}"
-        APP_TYPE        = "${args.APP_TYPE"}"
+        APP_TYPE        = "${args.APP_TYPE}"
     }
     stages {
         stage('Download Dependencies') {
