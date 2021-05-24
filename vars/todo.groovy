@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('preapare Artifact') {
+        stage('preapare Artifact-NGINX') {
             when {
                 environment name: 'COMPONENT', value: 'frontend'
             }
@@ -60,7 +60,7 @@ pipeline {
 
        // }
 
-        stage('preapare Artifact') {
+        stage('preapare Artifact-JAVA') {
             when {
                 environement name: 'APP_TYPE', value: 'JAVA'
             }
