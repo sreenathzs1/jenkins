@@ -90,7 +90,7 @@ pipeline {
             }
         }
         
-        stages('Preapare Artifacts') {
+        stage('Prepare Artifacts') {
             steps {
                 script {
                     prepare = new nexus()
