@@ -21,3 +21,4 @@ def make_artifacts(APP_TYPE, COMPONENT) {
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     }
+}
