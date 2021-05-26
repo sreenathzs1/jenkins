@@ -17,88 +17,23 @@ pipeline {
         APP_TYPE        = "${args.APP_TYPE}"
     }
     stages {
-        stage('Download Dependencies-frontend') {
-            when {
-                environment name: 'APP_TYPE', value: 'NGINX'
-            }
+        stage('Build Code & Install Dependencies') {
             steps {
-                sh '''
-                npm install 
-                sudo npm install -g npm@latest
-                npm run build
-                '''
+            script {
+                    build = new nexus()
+                    build.code_build("${APP_TYPE}", "${COMPONENT}")
+                }
+                
             }
         }
-
-         stage('compile code & Package') {
-             when {
-                environment name: 'APP_TYPE', value: 'JAVA'
-            }
-            steps {
-             sh '''
-             mvn clean package
-             '''
-            }  
-        }
-        //stage('make package') {
-         //steps {
-            // sh '''
-            // mvn package
-             //'''
-            //}  
-
-       // }
-
-        stage('Go Get Git hubs files') {
-             when {
-                environment name: 'APP_TYPE', value: 'GO_LANG'
-            }
-            steps {
-                sh '''
-                go get "github.com/dgrijalva/jwt-go" 
-                go get "github.com/labstack/echo" 
-                go get "github.com/labstack/echo/middleware" 
-                go get "github.com/labstack/gommon/log" 
-                go get "github.com/openzipkin/zipkin-go" 
-                go get "github.com/openzipkin/zipkin-go/middleware/http"
-                go get "github.com/openzipkin/zipkin-go/reporter/http"
-                '''
-            }
-        }
-        stage('Again build') {
-             when {
-                environment name: 'APP_TYPE', value: 'GO_LANG'
-            }
-            steps {
-                sh '''
-                 go build main.go user.go tracing.go 
-                 go build
-                 '''
-            }
-        }
-        
-
-
-        stage('Download Dependencies-todo') {
-            when {
-                environment name: 'APP_TYPE', value: 'TODO'
-            }
-            steps {
-                sh '''
-                npm install 
-                '''
-            }
-        }
-        
+           
+          
         stage('Prepare Artifacts') {
             steps {
                 script {
                     prepare = new nexus()
                     prepare.make_artifacts ("${APP_TYPE}", "${COMPONENT}")
                 }
-                sh '''
-                ls
-                '''
             }
         }
         stage('Upload Artifacts') {
