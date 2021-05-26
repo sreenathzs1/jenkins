@@ -17,7 +17,7 @@ pipeline {
         APP_TYPE        = "${args.APP_TYPE}"
     }
     stages {
-        stage('Download Dependencies') {
+        stage('Download Dependencies-frontend') {
             when {
                 environment name: 'APP_TYPE', value: 'NGINX'
             }
@@ -112,7 +112,7 @@ pipeline {
 
 
 
-        stage('Download Dependencies') {
+        stage('Download Dependencies-todo') {
             when {
                 environment name: 'APP_TYPE', value: 'NGINX'
             }
