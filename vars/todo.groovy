@@ -114,7 +114,7 @@ pipeline {
 
         stage('Download Dependencies-todo') {
             when {
-                environment name: 'APP_TYPE', value: 'NGINX'
+                environment name: 'APP_TYPE', value: 'TODO'
             }
             steps {
                 sh '''
@@ -124,7 +124,7 @@ pipeline {
         }
         stage('preapare Artifact-NGINx') {
             when {
-                environment name: 'APP_TYPE', value: 'NGINX'
+                environment name: 'APP_TYPE', value: 'TODO'
             }
             steps {
                 sh '''
