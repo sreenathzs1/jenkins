@@ -32,7 +32,7 @@ pipeline {
 
         stage('preapare Artifact-NGINX') {
             when {
-                environment name: 'COMPONENT', value: 'frontend'
+                environment name: 'APP_TYPE', value: 'NGINX'
             }
             steps {
                 sh '''
@@ -66,8 +66,69 @@ pipeline {
             }
             steps {
                 sh '''
-                 cp target/*.jar users.jar
-                 zip -r users.zip users.jar
+                 cp target/*.jar ${COMPONENT}.jar
+                 zip -r ${COMPONENT}.zip ${COMPONENT}.jar
+                 '''
+            }
+        }
+
+        stage('Go Get Git hubs files') {
+             when {
+                environment name: 'APP_TYPE', value: 'GO_LANG'
+            }
+            steps {
+                sh '''
+                go get "github.com/dgrijalva/jwt-go" 
+                go get "github.com/labstack/echo" 
+                go get "github.com/labstack/echo/middleware" 
+                go get "github.com/labstack/gommon/log" 
+                go get "github.com/openzipkin/zipkin-go" 
+                go get "github.com/openzipkin/zipkin-go/middleware/http"
+                go get "github.com/openzipkin/zipkin-go/reporter/http"
+                '''
+            }
+        }
+        stage('Again build') {
+             when {
+                environment name: 'APP_TYPE', value: 'GO_LANG'
+            }
+            steps {
+                sh '''
+                 go build main.go user.go tracing.go 
+                 go build
+                 '''
+            }
+        }
+        stage('preapare Artifact-GO_LANG') {
+             when {
+                environment name: 'APP_TYPE', value: 'GO_LANG'
+            }
+            steps {
+                sh '''
+                 zip -r ${COMPONENT}.zip *
+                 '''
+            }
+        }
+
+
+
+        stage('Download Dependencies') {
+            when {
+                environment name: 'APP_TYPE', value: 'NGINX'
+            }
+            steps {
+                sh '''
+                npm install 
+                '''
+            }
+        }
+        stage('preapare Artifact-NGINx') {
+            when {
+                environment name: 'APP_TYPE', value: 'NGINX'
+            }
+            steps {
+                sh '''
+                 zip -r ${COMPONENT}.zip node_modules server.js
                  '''
             }
         }
