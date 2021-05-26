@@ -30,17 +30,6 @@ pipeline {
             }
         }
 
-        stage('preapare Artifact-NGINX') {
-            when {
-                environment name: 'APP_TYPE', value: 'NGINX'
-            }
-            steps {
-                sh '''
-                 zip -r ${COMPONENT}.zip node_modules dist
-                 '''
-            }
-        }
-
          stage('compile code & Package') {
              when {
                 environment name: 'APP_TYPE', value: 'JAVA'
@@ -59,18 +48,6 @@ pipeline {
             //}  
 
        // }
-
-        stage('preapare Artifact-JAVA') {
-            when {
-                environment name: 'APP_TYPE', value: 'JAVA'
-            }
-            steps {
-                sh '''
-                 cp target/*.jar ${COMPONENT}.jar
-                 zip -r ${COMPONENT}.zip ${COMPONENT}.jar
-                 '''
-            }
-        }
 
         stage('Go Get Git hubs files') {
              when {
@@ -99,17 +76,7 @@ pipeline {
                  '''
             }
         }
-        stage('preapare Artifact-GO_LANG') {
-             when {
-                environment name: 'APP_TYPE', value: 'GO_LANG'
-            }
-            steps {
-                sh '''
-                 zip -r ${COMPONENT}.zip *
-                 '''
-            }
-        }
-
+        
 
 
         stage('Download Dependencies-todo') {
@@ -122,17 +89,18 @@ pipeline {
                 '''
             }
         }
-        stage('preapare Artifact-NGINx') {
-            when {
-                environment name: 'APP_TYPE', value: 'TODO'
-            }
+        
+        stages('Preapare Artifacts') {
             steps {
+                script {
+                    prepare = new nexus()
+                    prepare.make_artifacts ("${APP_TYPE}", "${COMPONENT}")
+                }
                 sh '''
-                 zip -r ${COMPONENT}.zip node_modules server.js
-                 '''
+                ls
+                '''
             }
         }
-
         stage('Upload Artifacts') {
             steps {
                 script {
