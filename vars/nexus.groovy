@@ -5,7 +5,7 @@ def nexus() {
 
 def make_artifacts(APP_TYPE, COMPONENT) {
     if(APP_TYPE == "NGINX") {
-    command = "zip -r ${COMPONENT}.zip node_modules dist"
+    command = "zip -r ${COMPONENT}1.zip node_modules dist"
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "NODEJS") {
