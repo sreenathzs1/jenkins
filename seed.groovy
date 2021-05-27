@@ -9,12 +9,13 @@ pipelineJob('CI-Pipelines/frontend-ci') {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
+                    'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                     'url'('https://github.com/sreenathzs1/frontend.git')
                 }
             }
             'branches' {
                 'hudson.plugins.git.BranchSpec' {
-                    'name'('*/main')
+                    'name'('*/tags/*')
                 }
             }
         }
@@ -30,12 +31,13 @@ pipelineJob('CI-Pipelines/users-ci') {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
+                    'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                     'url'('https://github.com/sreenathzs1/users.git')
                 }
             }
             'branches' {
                 'hudson.plugins.git.BranchSpec' {
-                    'name'('*/main')
+                    'name'('*/tags/*')
                 }
             }
         }
@@ -51,12 +53,13 @@ pipelineJob('CI-Pipelines/login-ci') {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
+                    'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                     'url'('https://github.com/sreenathzs1/login.git')
                 }
             }
             'branches' {
                 'hudson.plugins.git.BranchSpec' {
-                    'name'('*/main')
+                    'name'('*/tags/*')
                 }
             }
         }
@@ -72,12 +75,13 @@ pipelineJob('CI-Pipelines/todo-ci') {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
+                    'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                     'url'('https://github.com/sreenathzs1/todo.git')
                 }
             }
             'branches' {
                 'hudson.plugins.git.BranchSpec' {
-                    'name'('*/main')
+                    'name'('*/tags/*')
                 }
             }
         }
@@ -93,12 +97,13 @@ pipelineJob('CI-Pipelines/redis-ci') {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
+                    'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                     'url'('https://github.com/sreenathzs1/redis.git')
                 }
             }
             'branches' {
                 'hudson.plugins.git.BranchSpec' {
-                    'name'('*/main')
+                    'name'('*/tags/*')
                 }
             }
         }
