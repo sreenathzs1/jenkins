@@ -5,11 +5,11 @@ folder('CI-Pipelines') {
 
 pipelineJob('CI-Pipelines/frontend-ci') {
  configure { flowdefinition ->
-    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobproperty' {
+    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
         'triggers' {
-            'huddon.triggers.SCMTrigger' {
+            'hudson.triggers.SCMTrigger' {
                 'spec'('* * * * 1-5')
-                'ignorepostCommitHooks'(false)
+                'ignorePostCommitHooks'(false)
             }
         }
     }
