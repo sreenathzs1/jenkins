@@ -36,4 +36,4 @@ pipelineJob("CI-Pipelines/${j}-ci") {
         }
     }
 }   
-}
+
