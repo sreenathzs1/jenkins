@@ -15,7 +15,7 @@ def make_artifacts(APP_TYPE, COMPONENT) {
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "NODEJS") {
-        command = "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME}.zip ${COMPONENT}.jar"
+        command = "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ${COMPONENT}.jar"
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "GO_LANG") {
