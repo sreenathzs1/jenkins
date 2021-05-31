@@ -36,7 +36,7 @@ def code_build(APP_TYPE, COMPONENT) {
         command = "env"
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
-    } else if(APP_TYPE == "NODEJS") {
+    } else if(APP_TYPE == "JAVA") {
     command = "mvn clean package"
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
