@@ -14,9 +14,7 @@ pipeline {
         pollSCM('*/2 * * * 1-5')
     }
 
-    tools {
-       maven "mvn 3.6.3"
-    }
+
 
     environment {
         COMPONENT       = "${args.COMPONENT}"
