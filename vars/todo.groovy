@@ -15,7 +15,7 @@ pipeline {
     }
 
     tools {
-       maven "mvn3.6.3"
+       maven "mvn 3.6.3"
     }
 
     environment {
