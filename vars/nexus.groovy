@@ -11,19 +11,19 @@ def make_artifacts(APP_TYPE, COMPONENT) {
     def get_branch_exec=sh(returnStdout: true, script: get_branch)
     def FILENAME=COMPONENT+'-'+get_branch_exec+'.zip'
     if(APP_TYPE == "NGINX") {
-        command = "zip -r ${FILENAME} *"
+        command = "zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "JAVA") {
-        command = "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ${COMPONENT}.jar"
+        command = "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "GO_LANG") {
-        command = "zip -r ${FILENAME} *"
+        command = "zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "TODO") {
-        command = "zip -r ${FILENAME} *"
+        command = "zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     }
