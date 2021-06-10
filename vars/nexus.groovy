@@ -19,11 +19,11 @@ def make_artifacts(APP_TYPE, COMPONENT) {
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "GO_LANG") {
-        command = "zip -r ${FILENAME} *"
+        command = "zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     } else if(APP_TYPE == "TODO") {
-        command = "zip -r ${FILENAME} *"
+        command = "zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout:true, script: command)
         print execute_com
     }
