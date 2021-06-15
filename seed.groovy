@@ -40,7 +40,7 @@ pipelineJob("CI-Pipelines/${j}-ci") {
 }
 
 
-pipelineJob("deployment pipeline") {
+pipelineJob("Deployment Pipeline") {
  configure { flowdefinition ->
     flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
         'triggers' {
