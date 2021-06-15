@@ -3,6 +3,12 @@ pipeline {
         label "ANSIBLE"
     }
 
+    parameters {
+        choice(naem: 'ENv', choices: ['dev', 'prod' ], description: 'Select Environment')
+        string(name: 'COMPONENT', defaultvalue: '', description: 'which component to deploy')
+        string(name: 'VERSION', defaultvalue: '', description: 'which Version of component to deploy')
+    }
+
     stages {
 
         stage('Find the server') {
@@ -11,19 +17,21 @@ pipeline {
             }
         }
 
-        // ENV nedd to rpelaced with appropriate, Need to find how
-
         stage('Deploy to DEV Env') {
-            when { ... }
+            when {
+                environment name: 'ENV', value: 'dev'
+            }
             steps {
-                sh 'ansible-playbook ....'
+                sh 'echo ansible-playbook ....'
             }
         }
 
         stage('Deploy to PROD ENV') {
-            when { .... }
+            when {
+                environment name: 'ENV', value: 'prod'
+            }
             steps {
-                sh 'ansible-playbook ....'
+                sh 'echo ansible-playbook ....'
             }
 
         }
