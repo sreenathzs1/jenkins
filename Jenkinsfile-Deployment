@@ -3,12 +3,11 @@ pipeline {
         label "ANSIBLE"
     }
 
-    parameters {
-        choice(naem: 'ENv', choices: ['dev', 'prod' ], description: 'Select Environment')
-        string(name: 'COMPONENT', defaultvalue: '', description: 'which component to deploy')
-        string(name: 'VERSION', defaultvalue: '', description: 'which Version of component to deploy')
+     parameters {
+        choice(name: 'ENV', choices: ['dev', 'prod' ], description: 'Select Environment')
+        string(name: 'COMPONENT', defaultValue: '', description: 'Which Component to deploy')
+        string(name: 'VERSION', defaultValue: '', description: 'Which Version of Component to deploy')
     }
-
     stages {
 
         stage('Find the server') {
