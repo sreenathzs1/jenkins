@@ -14,13 +14,15 @@ pipeline {
     } 
 
     stages {
-
-        stage('Find the server') {
+        stage('Update Build Description') {
             steps {
-
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "VERSION = ${VERSION}"
+            }
+        }
+        stage('Find the server') {
+            steps {
                 sh '''
                     aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress |xargs -n1 > inv
                 '''
