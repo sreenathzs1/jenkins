@@ -5,7 +5,7 @@ pipeline {
     environment {
         UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD')
     }
-     parameters {
+    parameters {
         choice(name: 'ENV', choices: ['dev', 'prod' ], description: 'Select Environment')
         string(name: 'COMPONENT', defaultValue: '', description: 'Which Component to deploy')
         string(name: 'VERSION', defaultValue: '', description: 'Which Version of Component to deploy')
