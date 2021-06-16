@@ -2,7 +2,7 @@ pipeline {
     agent {
         label "ANSIBLE"
     }
-    
+
     environment {
         UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD')
     }
@@ -17,6 +17,7 @@ pipeline {
 
         stage('Find the server') {
             steps {
+                
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "VERSION = ${VERSION}"
@@ -31,7 +32,7 @@ pipeline {
                 environment name: 'ENV', value: 'dev'
             }
             steps {
-                 git branch: 'main', url: 'https://github.com/sreenathzs1/ansible.git'
+                git branch: 'main', url: 'https://github.com/sreenathzs1/ansible.git'
                 sh '''
                     ansible-playbook -i inv todoapp.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD}
                 '''
