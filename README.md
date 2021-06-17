@@ -2,4 +2,4 @@
 
 jenkins Pipeline by using Groovy Script and pipeline syntax
 
-Ansible
+Ansible with deployment dev and prod
