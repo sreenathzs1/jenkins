@@ -14,13 +14,13 @@ pipeline {
     } 
 
     stages {
-        stage('Update Build Description') {
-            steps {
+        #stage('Update Build Description') {
+            #steps {
                 # addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
                 # addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
                 # addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "VERSION = ${VERSION}"
-            }
-        }
+            #}
+        #}
         stage('Find the server') {
             steps {
                 sh '''
