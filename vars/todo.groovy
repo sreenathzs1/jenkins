@@ -4,7 +4,7 @@ def call(Map Params =[:]) {
         NEXUS_IP           : '172.31.7.112',
  ]
  args << Params
- // End Default + Requried argumanets
+ //End Default + Requried argumanets
 pipeline {
     agent {
         label "${args.SLAVE_LABEL}"
