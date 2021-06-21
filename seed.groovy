@@ -61,23 +61,23 @@ pipelineJob("Deployment Pipeline") {
     }
 }
 
-pipelineJob("TODO_Deployment Pipeline") {
-    configure { flowdefinition ->
-        flowdefinition << delegate. 'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps'){
-            'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git'){
-                'userRemoteConfigs' {
-                    'hudson.plugins.git.UserRemoteConfig' {
-                        'url'('https://github.com/zs-amrutha/Jenkins.git')
-                    }
-                }
-                'branches' {
-                    'hudson.plugins.git.BranchSpec' {
-                        'name'('main')
-                    }
-                }
-            }
-            'scriptpath'('Jenkinsfile-Deployment')
-            'lightweight'(true)
-        }
-    }
-}
+//pipelinejob("todo_deployment pipeline") {
+//    configure { flowdefinition ->
+//        flowdefinition << delegate. 'definition'(class:'org.jenkinsci.plugins.workflow.cps.cpsscmflowdefinition',plugin:'workflow-cps'){
+//            'scm'(class:'hudson.plugins.git.gitscm',plugin:'git'){
+//                'userremoteconfigs' {
+//                    'hudson.plugins.git.userremoteconfig' {
+//                        'url'('https://github.com/zs-amrutha/jenkins.git')
+//                    }
+//                }
+//                'branches' {
+//                    'hudson.plugins.git.branchspec' {
+//                        'name'('main')
+//                    }
+//                }
+//            }
+//            'scriptpath'('jenkinsfile-deployment')
+//            'lightweight'(true)
+//        }
+//    }
+//}
