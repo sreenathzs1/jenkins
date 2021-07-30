@@ -47,7 +47,6 @@ pipelineJob("Deployment Pipeline") {
             'userRemoteConfigs' {
                 'hudson.plugins.git.UserRemoteConfig' {
                     'url'('https://github.com/sreenathzs1/jenkins.git')
-                    credentialsId: 'GitHub_Credentials'
                 }
             }
             'branches' {
